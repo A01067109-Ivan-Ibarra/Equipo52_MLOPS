@@ -10,6 +10,7 @@ __pycache__/
 # Archivos de configuración locales
 *.env
 .env
+env
 
 # Archivos de Jupyter y cachés
 .ipynb_checkpoints/
