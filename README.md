@@ -26,7 +26,7 @@ Una solución de Machine Learning puede:
 ```
 PROBLEMA:
 - Clasificación multiclase (7 niveles de obesidad)
-- Dataset con 2111 registros y 17 características
+- Dataset con 2153 registros y 17 características
 - Variables: biométricas, demográficas y hábitos de vida
 
 SOLUCIÓN:
@@ -37,7 +37,7 @@ SOLUCIÓN:
 DATOS:
 - Fuente: Dataset de obesidad con características biométricas
 - Calidad: Limpio después de EDA y preprocesamiento
-- Volumen: 2111 registros, adecuado para entrenamiento
+- Volumen: 2153 registros, adecuado para entrenamiento
 
 IMPACTO:
 - Mejora en detección temprana de obesidad
@@ -52,7 +52,7 @@ IMPACTO:
 ### Dataset Utilizado
 - **Original**: `obesity_estimation_original.csv` (2111, 17) - Referencia limpia
 - **Modified**: `obesity_estimation_modified.csv` (2153, 18) - Con problemas para practicar
-- **Creado**: Dataset limpio resultado del proceso de limpieza
+- **Creado**: Dataset limpio resultado del proceso de limpieza (2153, 17) - Conservando todas las filas válidas
 
 ### Problemas Identificados y Solucionados
 
@@ -73,7 +73,7 @@ IMPACTO:
    - Peso: 20-200 kg
 5. **Normalización categórica**: Formato estándar (ej: 'obesity_type_iii')
 6. **Imputación inteligente**: Mediana para numéricas, moda para categóricas
-7. **Ajuste de dimensiones**: Eliminación de filas extra
+7. **Conservación de datos**: Mantener todas las 2153 filas (42 filas extra conservadas)
 
 ### Herramientas Utilizadas
 - **Python**: Pandas, NumPy para manipulación de datos
@@ -88,7 +88,7 @@ IMPACTO:
 ### Análisis Exploratorio Realizado
 
 #### 📈 Estadísticas Descriptivas:
-- **Dataset final**: (2111, 17) registros y características
+- **Dataset final**: (2153, 17) registros y características
 - **Valores faltantes**: 0 (después de limpieza)
 - **Variables numéricas**: 8 (Age, Height, Weight, FCVC, NCP, CH2O, FAF, TUE)
 - **Variables categóricas**: 9 (Gender, family_history, FAVC, CAEC, SMOKE, SCC, CALC, MTRANS, NObeyesdad)
@@ -96,13 +96,13 @@ IMPACTO:
 #### 🎯 Variable Objetivo (NObeyesdad):
 ```
 Distribución de clases:
-- obesity_type_i: 352 personas (16.7%)
-- obesity_type_iii: 310 personas (14.7%)
-- obesity_type_ii: 293 personas (13.9%)
-- overweight_level_i: 289 personas (13.7%)
-- overweight_level_ii: 286 personas (13.5%)
-- normal_weight: 283 personas (13.4%)
-- insufficient_weight: 271 personas (12.8%)
+- obesity_type_i: 375 personas (17.4%)
+- obesity_type_iii: 326 personas (15.1%)
+- obesity_type_ii: 303 personas (14.1%)
+- overweight_level_i: 297 personas (13.8%)
+- overweight_level_ii: 292 personas (13.6%)
+- normal_weight: 288 personas (13.4%)
+- insufficient_weight: 272 personas (12.6%)
 ```
 
 #### 📊 Análisis de Correlaciones:
@@ -148,10 +148,10 @@ db/
 
 #### 📝 Registro de Cambios:
 - **Eliminación**: Columna 'mixed_type_col'
-- **Corrección**: 165 valores extremos fuera de rangos realistas
+- **Corrección**: Valores extremos fuera de rangos realistas
 - **Imputación**: Valores faltantes con mediana/moda
 - **Normalización**: Variables categóricas a formato estándar
-- **Ajuste**: Eliminación de 42 filas extra
+- **Conservación**: Mantenimiento de 42 filas extra con datos válidos
 
 ### Herramientas de Versionado
 - **Git**: Control de versiones del código y documentación
@@ -200,9 +200,9 @@ Basado en el análisis de correlaciones y características del dataset:
 ### Estrategia de Entrenamiento
 
 #### 🔄 División de Datos:
-- **Train**: 70% (1477 registros)
-- **Validation**: 15% (317 registros)
-- **Test**: 15% (317 registros)
+- **Train**: 70% (1507 registros)
+- **Validation**: 15% (323 registros)
+- **Test**: 15% (323 registros)
 
 #### ⚙️ Ajuste de Hiperparámetros:
 - **Grid Search**: Búsqueda exhaustiva de parámetros
@@ -268,10 +268,11 @@ Basado en el análisis de correlaciones y características del dataset:
 ### ✅ Logros de la Fase 1:
 
 #### 🎯 Calidad de Datos:
-- **Dataset limpio**: (2111, 17) sin valores faltantes
+- **Dataset limpio**: (2153, 17) sin valores faltantes
 - **Formato consistente**: Variables normalizadas
 - **Rangos válidos**: Valores realistas para variables biométricas
 - **Sin duplicados**: Datos únicos y confiables
+- **Conservación de datos**: 42 filas extra mantenidas por contener información válida
 
 #### 📊 Insights Clave:
 - **Distribución balanceada**: Clases relativamente equilibradas
@@ -305,7 +306,8 @@ Basado en el análisis de correlaciones y características del dataset:
 1. **Enfoque sistemático**: Proceso estructurado de limpieza
 2. **Validación continua**: Comparación con dataset original
 3. **Documentación en tiempo real**: Registro de cada cambio
-4. **Preparación para escalabilidad**: Estructura preparada para ML
+4. **Conservación de datos**: Enfoque de producción que preserva toda la información válida
+5. **Preparación para escalabilidad**: Estructura preparada para ML
 
 ### 📋 Próximos Pasos:
 - ✅ Dataset limpio y listo para modelado
